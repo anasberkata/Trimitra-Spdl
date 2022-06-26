@@ -27,10 +27,14 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="#">My Profile</a>
-                                <a class="dropdown-item" href="#">Logout</a>
+                                <a class="dropdown-item" href="../logout.php" onclick="return confirm('Yakin akan keluar dari aplikasi?');">Logout</a>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <div class="wrapper ">
+            <div class="main-panel">
+                <!-- End Navbar -->

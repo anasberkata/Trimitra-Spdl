@@ -6,32 +6,26 @@
                 </div>
             </a>
             <a href="#" class="simple-text logo-normal">
-                SPD PT. QL TRIMITRA
+                SPDL PT. QL TRIMITRA
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active ">
-                    <a href="./dashboard.html">
+                <!-- <li class="active "> -->
+                <li>
+                    <a href="../view_admin/index.php">
                         <i class="nc-icon nc-bank"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="./notifications.html">
+                    <a href="../view_legal/index.php">
                         <i class="nc-icon nc-single-copy-04"></i>
-                        <p>Data Arsip</p>
+                        <p>Data Dokumen Legal</p>
                     </a>
                 </li>
                 <li>
-                    <a href="./notifications.html">
-                        <i class="nc-icon nc-badge"></i>
-                        <p>Data Divisi</p>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="./user.html">
+                    <a href="../view_user/index.php">
                         <i class="nc-icon nc-single-02"></i>
                         <p>Data Petugas</p>
                     </a>

@@ -13,22 +13,27 @@
                             </h5>
                         </div>
                         <div class="card-body">
-                            <form action="cek-login.php" method="post">
+
+                            <?php if (isset($_GET["pesan"])) : ?>
+                                <p class="alert alert-danger"><?= $_GET["pesan"]; ?></p>
+                            <?php endif; ?>
+
+                            <form action="check_login.php" method="post">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Username">
+                                            <input type="text" class="form-control" placeholder="Username" name="username">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password">
+                                            <input type="password" class="form-control" placeholder="Password" name="password">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="update ml-auto mr-auto">
-                                        <button type="submit" class="btn btn-primary btn-round">Login</button>
+                                        <button type="submit" class="btn btn-primary btn-round" name="login">Login</button>
                                     </div>
                                 </div>
                             </form>
