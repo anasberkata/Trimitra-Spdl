@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 26, 2022 at 11:01 AM
+-- Generation Time: Jun 27, 2022 at 07:19 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -29,15 +29,16 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `data_legal` (
   `id_legal` int(11) NOT NULL,
-  `perusahaan` varchar(255) NOT NULL,
-  `land_title` varchar(255) NOT NULL,
-  `land_area` int(11) NOT NULL,
-  `land_address` varchar(255) NOT NULL,
-  `land_type` varchar(255) NOT NULL,
-  `land_owner` varchar(255) NOT NULL,
-  `no_ajb` varchar(255) NOT NULL,
-  `remark` varchar(255) NOT NULL,
-  `data_created` date NOT NULL,
+  `kode_dokumen` varchar(100) NOT NULL,
+  `no_sertifikat` varchar(100) NOT NULL,
+  `no_ajb` varchar(100) NOT NULL,
+  `luas_tanah` int(11) NOT NULL,
+  `atas_nama` varchar(100) NOT NULL,
+  `no_kuasa` varchar(100) NOT NULL,
+  `titik_lokasi` int(11) NOT NULL,
+  `file` varchar(255) NOT NULL,
+  `status_dokumen` int(11) NOT NULL,
+  `date_created` date NOT NULL,
   `is_active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -45,8 +46,54 @@ CREATE TABLE `data_legal` (
 -- Dumping data for table `data_legal`
 --
 
-INSERT INTO `data_legal` (`id_legal`, `perusahaan`, `land_title`, `land_area`, `land_address`, `land_type`, `land_owner`, `no_ajb`, `remark`, `data_created`, `is_active`) VALUES
-(1, 'PT. QL Trimitra', '10.13.31.03.3.00001', 2338, 'Desa Kertamukti, Kecamatan Haurwangi, Cianjur', 'Poultry Farm', 'PT. QL Trimitra', '', '', '2022-06-21', 1);
+INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_sertifikat`, `no_ajb`, `luas_tanah`, `atas_nama`, `no_kuasa`, `titik_lokasi`, `file`, `status_dokumen`, `date_created`, `is_active`) VALUES
+(1, 'L001', '01', '01', 2000, 'Nanang Miftahudin', '01', 1, 'sertifikat.pdf', 1, '2022-06-27', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status_dokumen`
+--
+
+CREATE TABLE `status_dokumen` (
+  `id_status_dokumen` int(11) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `date_created` date NOT NULL,
+  `is_active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `status_dokumen`
+--
+
+INSERT INTO `status_dokumen` (`id_status_dokumen`, `status`, `date_created`, `is_active`) VALUES
+(1, 'Dikaji Notaris', '2022-06-27', 1),
+(2, 'Ada di Arsip', '2022-06-27', 1),
+(3, 'Dipinjam', '2022-06-27', 1),
+(4, 'Hilang', '2022-06-27', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `titik_lokasi`
+--
+
+CREATE TABLE `titik_lokasi` (
+  `id_titik_lokasi` int(11) NOT NULL,
+  `lokasi` varchar(100) NOT NULL,
+  `date_created` date NOT NULL,
+  `is_active` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `titik_lokasi`
+--
+
+INSERT INTO `titik_lokasi` (`id_titik_lokasi`, `lokasi`, `date_created`, `is_active`) VALUES
+(1, 'Farm Mariwati', '2022-06-27', 1),
+(2, 'RPA Cikalong Kulon', '2022-06-27', 1),
+(3, 'Farm Buniayu', '2022-06-27', 1),
+(4, 'Expired Customer', '2022-06-27', 1);
 
 -- --------------------------------------------------------
 
@@ -84,6 +131,18 @@ ALTER TABLE `data_legal`
   ADD PRIMARY KEY (`id_legal`);
 
 --
+-- Indexes for table `status_dokumen`
+--
+ALTER TABLE `status_dokumen`
+  ADD PRIMARY KEY (`id_status_dokumen`);
+
+--
+-- Indexes for table `titik_lokasi`
+--
+ALTER TABLE `titik_lokasi`
+  ADD PRIMARY KEY (`id_titik_lokasi`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -98,6 +157,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `data_legal`
   MODIFY `id_legal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `status_dokumen`
+--
+ALTER TABLE `status_dokumen`
+  MODIFY `id_status_dokumen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `titik_lokasi`
+--
+ALTER TABLE `titik_lokasi`
+  MODIFY `id_titik_lokasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
