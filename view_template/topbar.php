@@ -19,14 +19,14 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navigation">
                     <ul class="navbar-nav">
                         <li class="nav-item btn-rotate dropdown">
-                            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="nc-icon nc-single-02"></i>
                                 <p>
-                                    <span class="d-lg-none d-md-block">Akun</span>
+                                    <span class="d-md-block"><?= $user["nama"]; ?></span>
                                 </p>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">My Profile</a>
+                                <!-- <a class="dropdown-item" href="#"><?= $user["nama"]; ?></a> -->
                                 <a class="dropdown-item" href="../logout.php" onclick="return confirm('Yakin akan keluar dari aplikasi?');">Logout</a>
                             </div>
                         </li>

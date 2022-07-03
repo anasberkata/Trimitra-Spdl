@@ -2,104 +2,164 @@
 include "../view_template/header.php";
 include "../view_template/sidebar.php";
 include "../view_template/topbar.php";
+
+
+
+$titik_lokasi = $_GET["titik_lokasi"];
+
+if (!isset($titik_lokasi)) {
+    $legal = query("SELECT * FROM data_legal
+                INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
+                INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
+} else {
+    $legal = query("SELECT * FROM data_legal
+                INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
+                INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
+                WHERE titik_lokasi = $titik_lokasi
+                ");
+}
 ?>
 
 <div class="content">
     <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row pb-2">
-                        <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-box text-success"></i>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="index.php?titik_lokasi=1">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row pb-2">
+                            <div class="col-2 col-md-2">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-box text-success"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                            <div class="numbers">
-                                <p class="card-category">Arsip</p>
-                                <p class="card-title">20
-                                <p>
+                            <div class="col-10 col-md-10">
+                                <div class="numbers">
+                                    <p class="card-category">Farm Mariwati</p>
+                                    <p class="card-title">20
+                                    <p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-6">
-            <div class="card card-stats">
-                <div class="card-body ">
-                    <div class="row pb-2">
-                        <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                                <i class="nc-icon nc-single-02 text-danger"></i>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="index.php?titik_lokasi=2">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row pb-2">
+                            <div class="col-2 col-md-2">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-box text-info"></i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-7 col-md-8">
-                            <div class="numbers">
-                                <p class="card-category">Petugas</p>
-                                <p class="card-title">2
-                                <p>
+                            <div class="col-10 col-md-10">
+                                <div class="numbers">
+                                    <p class="card-category">Cikalong Kulon</p>
+                                    <p class="card-title">150
+                                    <p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="index.php?titik_lokasi=3">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row pb-2">
+                            <div class="col-2 col-md-2">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-box text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="col-10 col-md-10">
+                                <div class="numbers">
+                                    <p class="card-category">Farm Buniayu</p>
+                                    <p class="card-title">50
+                                    <p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <a href="index.php?titik_lokasi=4">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row pb-2">
+                            <div class="col-2 col-md-2">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-box text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="col-10 col-md-10">
+                                <div class="numbers">
+                                    <p class="card-category">Cert Customer</p>
+                                    <p class="card-title">20
+                                    <p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header ">
-                    <h5 class="card-title">Users Behavior</h5>
-                    <p class="card-category">24 Hours performance</p>
+                    <h5 class="card-title">Lokasi :
+                        <?php
+                        if (!isset($titik_lokasi)) {
+                            echo "Semua";
+                        } else {
+                            echo $legal[0]["lokasi"];
+                        }
+                        ?>
+                    </h5>
+                    <!-- <p class="card-category">Jumlah Data : </p> -->
                 </div>
                 <div class="card-body ">
                     <div class="table-responsive">
                         <table class="table">
                             <thead class=" text-primary">
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Country
-                                </th>
-                                <th>
-                                    City
-                                </th>
-                                <th class="text-right">
-                                    Salary
-                                </th>
+                                <th>No.</th>
+                                <th>Kode Dokumen</th>
+                                <th>No. Sertifikat</th>
+                                <th>No. AJB</th>
+                                <th>Atas Nama</th>
+                                <th>Keterangan</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        Dakota Rice
-                                    </td>
-                                    <td>
-                                        Niger
-                                    </td>
-                                    <td>
-                                        Oud-Turnhout
-                                    </td>
-                                    <td class="text-right">
-                                        $36,738
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Minerva Hooper
-                                    </td>
-                                    <td>
-                                        Curaçao
-                                    </td>
-                                    <td>
-                                        Sinaai-Waas
-                                    </td>
-                                    <td class="text-right">
-                                        $23,789
-                                    </td>
-                                </tr>
+                                <?php $i = 1; ?>
+                                <?php foreach ($legal as $l) : ?>
+                                    <tr>
+                                        <td><?= $i; ?></td>
+                                        <td><?= $l["kode_dokumen"]; ?></td>
+                                        <td><?= $l["no_sertifikat"]; ?></td>
+                                        <td><?= $l["no_ajb"]; ?></td>
+                                        <td><?= $l["atas_nama"]; ?></td>
+                                        <td>
+                                            <?php if ($l["id_status_dokumen"] == 1) : ?>
+                                                <span class="badge bg-info text-white"><?= $l["status"]; ?></span>
+                                            <?php elseif ($l["id_status_dokumen"] == 2) : ?>
+                                                <span class="badge bg-success text-white"><?= $l["status"]; ?></span>
+                                            <?php elseif ($l["id_status_dokumen"] == 3) : ?>
+                                                <span class="badge bg-warning text-white"><?= $l["status"]; ?></span>
+                                            <?php else : ?>
+                                                <span class="badge bg-danger text-white"><?= $l["status"]; ?></span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <?php $i++; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

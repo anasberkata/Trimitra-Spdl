@@ -73,3 +73,128 @@ function user_delete($id)
     mysqli_query($conn, "DELETE FROM users WHERE id = $id");
     return mysqli_affected_rows($conn);
 }
+
+
+// --------------------------------------------------------- LEGAL ---------------------------------------------------------
+
+function legal_tambah($data)
+{
+    global $conn;
+
+    $kode_dokumen = $data["kode_dokumen"];
+    $no_sertifikat = $data["no_sertifikat"];
+    $no_ajb = $data["no_ajb"];
+    $luas_tanah = $data["luas_tanah"];
+    $atas_nama = $data["atas_nama"];
+    $no_kuasa = $data["no_kuasa"];
+    $titik_lokasi = $data["titik_lokasi"];
+    $keterangan = $data["keterangan"];
+    $date_created = date("Y-m-d");
+
+    // Upload File
+    $file = upload();
+    if (!$file) {
+        return false;
+    }
+
+    $query = "INSERT INTO data_legal
+				VALUES
+			(NULL, '$kode_dokumen', '$no_sertifikat', '$no_ajb', '$luas_tanah', '$atas_nama', '$no_kuasa', '$titik_lokasi', '$file', '$keterangan', '$date_created')
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function legal_edit($data)
+{
+    global $conn;
+
+    $id = $data["id"];
+    $kode_dokumen = $data["kode_dokumen"];
+    $no_sertifikat = $data["no_sertifikat"];
+    $no_ajb = $data["no_ajb"];
+    $luas_tanah = $data["luas_tanah"];
+    $atas_nama = $data["atas_nama"];
+    $no_kuasa = $data["no_kuasa"];
+    $titik_lokasi = $data["titik_lokasi"];
+    $keterangan = $data["keterangan"];
+    $file_lama = $data["file_lama"];
+
+    if ($_FILES["file"]["error"] === 4) {
+        $file = $file_lama;
+    } else {
+        $file = upload();
+    }
+
+    $query = "UPDATE data_legal SET
+			kode_dokumen = '$kode_dokumen',
+			no_sertifikat = '$no_sertifikat',
+			no_ajb = '$no_ajb',
+			luas_tanah = '$luas_tanah',
+			atas_nama = '$atas_nama',
+			no_kuasa = '$no_kuasa',
+			titik_lokasi = '$titik_lokasi',
+			status_dokumen = '$keterangan',
+			file = '$file'
+
+            WHERE id_legal = $id
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function upload()
+{
+    $namaFile = $_FILES["file"]["name"];
+    $ukuranFile = $_FILES["file"]["size"];
+    $error = $_FILES["file"]["error"];
+    $tmpName = $_FILES["file"]["tmp_name"];
+
+    if ($error === 4) {
+        echo "<script>
+                alert('File sertifikat wajib diupload!');
+            </script>";
+
+        return false;
+    }
+
+    $ekstensiFileValid = ["pdf"];
+    $ekstensiFile = explode(".", $namaFile);
+    $ekstensiFile = strtolower(end($ekstensiFile));
+
+    if (!in_array($ekstensiFile, $ekstensiFileValid)) {
+        echo "<script>
+                alert('File yang diupload bukan PDF!');
+            </script>";
+
+        return false;
+    }
+
+    if ($ukuranFile > 2500000) {
+        echo "<script>
+                alert('Ukuran file terlalu besar, Maksimal 2mb!');
+            </script>";
+
+        return false;
+    }
+
+    $namaFileBaru = uniqid();
+    $namaFileBaru .= '.';
+    $namaFileBaru .= $ekstensiFile;
+
+    move_uploaded_file($tmpName, "../dokumen/" . $namaFileBaru);
+
+    return $namaFileBaru;
+}
+
+function legal_delete($id)
+{
+    global $conn;
+
+    mysqli_query($conn, "DELETE FROM data_legal WHERE id_legal = $id");
+    return mysqli_affected_rows($conn);
+}

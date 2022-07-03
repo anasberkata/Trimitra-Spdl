@@ -1,6 +1,4 @@
 <?php
-require "../functions.php";
-
 include "../view_template/header.php";
 include "../view_template/sidebar.php";
 include "../view_template/topbar.php";

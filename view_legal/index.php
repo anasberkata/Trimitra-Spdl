@@ -1,13 +1,12 @@
 <?php
-require "../functions.php";
+include "../view_template/header.php";
+include "../view_template/sidebar.php";
+include "../view_template/topbar.php";
 
 $legal = query("SELECT * FROM data_legal
                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
 
-include "../view_template/header.php";
-include "../view_template/sidebar.php";
-include "../view_template/topbar.php";
 ?>
 
 <div class="content">
@@ -18,13 +17,33 @@ include "../view_template/topbar.php";
                     <h5 class="card-title">Data Dokumen Legal</h5>
                     <!-- <p class="card-category">24 Hours performance</p> -->
 
-                    <a href="legal_add.php" class='btn btn-primary'>
-                        <span>Tambah Data</span>
-                    </a>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <a href="legal_add.php" class='btn btn-primary'>
+                                <span>Tambah Data</span>
+                            </a>
+                        </div>
+                        <div class="col-12 col-lg-8 pt-2">
+                            <form action="" method="post">
+                                <div class="form-group row align-items-center">
+                                    <div class="col-3">
+                                        <label for="nik">No. Sertifikat</label>
+                                    </div>
+                                    <div class="col-7">
+                                        <input type="text" class="form-control" name="nik" id="nik" placeholder="Cari data berdasarkan No. Sertifikat">
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="submit" class="btn btn-primary w-100" name="search"><i class="nc-icon nc-zoom-split"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="card-body ">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-striped table-bordered table-sm">
                             <thead class=" text-primary">
                                 <th>No.</th>
                                 <th>Kode Dokumen</th>
@@ -47,7 +66,7 @@ include "../view_template/topbar.php";
                                         <td><?= $l["atas_nama"]; ?></td>
                                         <td><?= $l["lokasi"]; ?></td>
                                         <td>
-                                            <a class="badge bg-primary text-white" href="../dokumen/<?= $l["file"]; ?>" target="_blank">Lihat File</a>
+                                            <a class="badge bg-primary text-white" href="../dokumen/<?= $l["file"]; ?>" target="_blank"><i class="nc-icon nc-paper p-2"></i></a>
                                             <!-- <a type="button" class="badge bg-primary text-white" data-toggle="modal" data-target="#file">Lihat File</a> -->
                                         </td>
                                         <td>
@@ -62,9 +81,9 @@ include "../view_template/topbar.php";
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <a href="legal_details.php?id=<?= $l["id_legal"] ?>" class="badge bg-info mb-2 text-white">Details</a> <br>
-                                            <a href="legal_edit.php?id=<?= $l["id_legal"] ?>" class="badge bg-warning mb-2 text-white">Edit</a> <br>
-                                            <a href="legal_delete.php?id=<?= $l["id_legal"] ?>" class="badge bg-danger text-white" onclick="return confirm('Yakin akan menghapus data dokumen : <?= $l['land_title']; ?> ?');">Hapus</a>
+                                            <a href="legal_detail.php?id=<?= $l["id_legal"] ?>" class="badge bg-primary text-white mb-2"><i class="nc-icon nc-single-copy-04 p-2"></i></a> <br>
+                                            <a href="legal_edit.php?id=<?= $l["id_legal"] ?>" class="badge bg-info text-white mb-2"><i class="nc-icon nc-tap-01 p-2"></i></a><br>
+                                            <a href="legal_delete.php?id=<?= $l["id_legal"] ?>" class="badge bg-danger text-white mb-2" onclick="return confirm('Yakin akan menghapus data dokumen : <?= $l['atas_nama']; ?> ?');"><i class="nc-icon nc-simple-remove p-2"></i></a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

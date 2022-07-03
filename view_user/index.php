@@ -1,11 +1,9 @@
 <?php
-require "../functions.php";
-
-$users = query("SELECT * FROM users");
-
 include "../view_template/header.php";
 include "../view_template/sidebar.php";
 include "../view_template/topbar.php";
+
+$users = query("SELECT * FROM users");
 ?>
 
 <div class="content">
@@ -39,8 +37,8 @@ include "../view_template/topbar.php";
                                         <td><?= $u["email"]; ?></td>
                                         <td><?= $u["username"]; ?></td>
                                         <td>
-                                            <a href="user_edit.php?id=<?= $u["id"] ?>" class="badge bg-warning mb-2">Edit</a> <br>
-                                            <a href="user_delete.php?id=<?= $u["id"] ?>" class="badge bg-danger" onclick="return confirm('Yakin akan menghapus data petugas : <?= $u['nama']; ?> ?');">Hapus</a>
+                                            <a href="user_edit.php?id=<?= $u["id"] ?>" class="badge bg-warning mb-2 text-white">Edit</a> <br>
+                                            <a href="user_delete.php?id=<?= $u["id"] ?>" class="badge bg-danger text-white" onclick="return confirm('Yakin akan menghapus data petugas : <?= $u['nama']; ?> ?');">Hapus</a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

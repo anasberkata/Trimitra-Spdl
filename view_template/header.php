@@ -5,6 +5,9 @@ session_start();
 if (!isset($_SESSION['login'])) {
     header("location: ../index.php");
 }
+
+require "../functions.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +27,8 @@ if (!isset($_SESSION['login'])) {
     <!-- CSS Files -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
+    <link href="../assets/css/my_style.css" rel="stylesheet" />
+
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>

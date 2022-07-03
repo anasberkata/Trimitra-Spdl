@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 27, 2022 at 07:19 PM
+-- Generation Time: Jul 03, 2022 at 03:07 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.12
+-- PHP Version: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,16 +38,19 @@ CREATE TABLE `data_legal` (
   `titik_lokasi` int(11) NOT NULL,
   `file` varchar(255) NOT NULL,
   `status_dokumen` int(11) NOT NULL,
-  `date_created` date NOT NULL,
-  `is_active` int(11) NOT NULL
+  `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `data_legal`
 --
 
-INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_sertifikat`, `no_ajb`, `luas_tanah`, `atas_nama`, `no_kuasa`, `titik_lokasi`, `file`, `status_dokumen`, `date_created`, `is_active`) VALUES
-(1, 'L001', '01', '01', 2000, 'Nanang Miftahudin', '01', 1, 'sertifikat.pdf', 1, '2022-06-27', 1);
+INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_sertifikat`, `no_ajb`, `luas_tanah`, `atas_nama`, `no_kuasa`, `titik_lokasi`, `file`, `status_dokumen`, `date_created`) VALUES
+(1, 'M001', '01', '01', 2000, 'Nanang Miftahudin', '01', 1, 'sertifikat.pdf', 1, '2022-06-27'),
+(2, 'R001', '01', '01', 3000, 'Riana Cahyawati', '01', 2, 'RPA01.pdf', 2, '2022-07-03'),
+(3, 'B001', '01', '01', 2300, 'Agnia Siti', '01', 3, 'buniayu01.pdf', 3, '2022-07-03'),
+(4, 'C001', '01', '01', 1500, 'Herna', '01', 4, 'cc.pdf', 4, '2022-07-03'),
+(8, 'B002', '02', '02', 1304, 'Berkata Kata', '02', 3, '62c1941349a20.pdf', 2, '2022-07-03');
 
 -- --------------------------------------------------------
 
@@ -58,19 +61,18 @@ INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_sertifikat`, `no_ajb`,
 CREATE TABLE `status_dokumen` (
   `id_status_dokumen` int(11) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `date_created` date NOT NULL,
-  `is_active` int(11) NOT NULL
+  `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `status_dokumen`
 --
 
-INSERT INTO `status_dokumen` (`id_status_dokumen`, `status`, `date_created`, `is_active`) VALUES
-(1, 'Dikaji Notaris', '2022-06-27', 1),
-(2, 'Ada di Arsip', '2022-06-27', 1),
-(3, 'Dipinjam', '2022-06-27', 1),
-(4, 'Hilang', '2022-06-27', 1);
+INSERT INTO `status_dokumen` (`id_status_dokumen`, `status`, `date_created`) VALUES
+(1, 'Dikaji Notaris', '2022-06-27'),
+(2, 'Ada di Arsip', '2022-06-27'),
+(3, 'Dipinjam', '2022-06-27'),
+(4, 'Hilang', '2022-06-27');
 
 -- --------------------------------------------------------
 
@@ -81,19 +83,18 @@ INSERT INTO `status_dokumen` (`id_status_dokumen`, `status`, `date_created`, `is
 CREATE TABLE `titik_lokasi` (
   `id_titik_lokasi` int(11) NOT NULL,
   `lokasi` varchar(100) NOT NULL,
-  `date_created` date NOT NULL,
-  `is_active` int(11) NOT NULL
+  `date_created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `titik_lokasi`
 --
 
-INSERT INTO `titik_lokasi` (`id_titik_lokasi`, `lokasi`, `date_created`, `is_active`) VALUES
-(1, 'Farm Mariwati', '2022-06-27', 1),
-(2, 'RPA Cikalong Kulon', '2022-06-27', 1),
-(3, 'Farm Buniayu', '2022-06-27', 1),
-(4, 'Expired Customer', '2022-06-27', 1);
+INSERT INTO `titik_lokasi` (`id_titik_lokasi`, `lokasi`, `date_created`) VALUES
+(1, 'Farm Mariwati', '2022-06-27'),
+(2, 'RPA Cikalong Kulon', '2022-06-27'),
+(3, 'Farm Buniayu', '2022-06-27'),
+(4, 'Cert Customer', '2022-06-27');
 
 -- --------------------------------------------------------
 
@@ -156,7 +157,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data_legal`
 --
 ALTER TABLE `data_legal`
-  MODIFY `id_legal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_legal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `status_dokumen`
