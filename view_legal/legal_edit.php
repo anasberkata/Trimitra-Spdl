@@ -43,7 +43,7 @@ $status_dokumen = query("SELECT * FROM status_dokumen");
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Kode Dokumen</label>
-                                    <input type="text" class="form-control" placeholder="Kode Dokumen" name="kode_dokumen" value="<?= $legal["kode_dokumen"]; ?>">
+                                    <input type="text" class="form-control" placeholder="Kode Dokumen" name="kode_dokumen" value="<?= $legal["kode_dokumen"]; ?>" readonly>
                                 </div>
                             </div>
                         </div>

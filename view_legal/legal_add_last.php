@@ -3,32 +3,8 @@ include "../view_template/header.php";
 include "../view_template/sidebar.php";
 include "../view_template/topbar.php";
 
-$titik_lokasi = $_GET["titik_lokasi"];
-
+$titik_lokasi = query("SELECT * FROM titik_lokasi");
 $status_dokumen = query("SELECT * FROM status_dokumen");
-$lokasi = query("SELECT * FROM titik_lokasi WHERE id_titik_lokasi = $titik_lokasi")[0];
-
-
-$queryKode = query("SELECT max(kode_dokumen) as kodeTerbesar FROM data_legal WHERE titik_lokasi = $titik_lokasi")[0];
-$kodeTerbesar = $queryKode['kodeTerbesar'];
-$urutan = (int) substr($kodeTerbesar, 3, 3);
-$urutan++;
-
-if ($titik_lokasi == 1) {
-    $huruf = "M";
-    $kodeDokumen = $huruf . sprintf("%03s", $urutan);
-} else if ($titik_lokasi == 2) {
-    $huruf = "RCK";
-    $kodeDokumen = $huruf . sprintf("%03s", $urutan);
-} else if ($titik_lokasi == 3) {
-    $huruf = "B";
-    $kodeDokumen = $huruf . sprintf("%03s", $urutan);
-} else if ($titik_lokasi == 4) {
-    $huruf = "C";
-    $kodeDokumen = $huruf . sprintf("%03s", $urutan);
-}
-
-
 
 ?>
 
@@ -41,97 +17,73 @@ if ($titik_lokasi == 1) {
                     <!-- <p class="card-category">24 Hours performance</p> -->
                 </div>
                 <div class="card-body ">
-                    <div class="row">
-                        <div class="col-6 col-lg-3">
-                            <a href="legal_add.php?titik_lokasi=1" class="btn btn-primary w-100">
-                                <i class="nc-icon nc-simple-add"></i>
-                                <span><b>Farm Mariwati</b></span>
-                            </a>
-                        </div>
-
-                        <div class="col-6 col-lg-3">
-                            <a href="legal_add.php?titik_lokasi=2" class="btn btn-info w-100">
-                                <i class="nc-icon nc-simple-add"></i>
-                                <span><b>Cikalong Kulon</b></span>
-                            </a>
-                        </div>
-
-                        <div class="col-6 col-lg-3">
-                            <a href="legal_add.php?titik_lokasi=3" class="btn btn-warning w-100">
-                                <i class="nc-icon nc-simple-add"></i>
-                                <span><b>Farm Buniayu</b></span>
-                            </a>
-                        </div>
-
-                        <div class="col-6 col-lg-3">
-                            <a href="legal_add.php?titik_lokasi=4" class="btn btn-danger w-100">
-                                <i class="nc-icon nc-simple-add"></i>
-                                <span><b>Cert Customer</b></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card-header ">
-                    <h5 class="card-title">Isi Form : <?= $lokasi["lokasi"]; ?></h5>
-                </div>
-                <div class="card-body">
                     <form action="" method="POST" enctype="multipart/form-data">
-
-                        <input type="hidden" value="<?= $titik_lokasi; ?>" name="titik_lokasi">
-
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Kode Dokumen</label>
-                                    <input type="text" class="form-control" placeholder="Kode Dokumen" name="kode_dokumen" value="<?= $kodeDokumen; ?>" readonly>
+                                    <label>Titik Lokasi</label>
+                                    <select class="form-control" name="titik_lokasi">
+                                        <option value="">Pilih Titik Lokasi</option>
+                                        <?php foreach ($titik_lokasi as $tl) : ?>
+                                            <option value="<?= $tl["id_titik_lokasi"]; ?>"><?= $tl["lokasi"]; ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kode Dokumen</label>
+                                    <input type="text" class="form-control" placeholder="Kode Dokumen" name="kode_dokumen" require>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>No. Sertifikat</label>
                                     <input type="text" class="form-control" placeholder="No. Sertifikat" name="no_sertifikat" require>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>No. AJB</label>
                                     <input type="text" class="form-control" placeholder="No. AJB" name="no_ajb" require>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Luas Tanah (m<sup>2</sup>)</label>
                                     <input type="number" class="form-control" placeholder="Luas Tanah" name="luas_tanah" require>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Atas Nama</label>
                                     <input type="text" class="form-control" placeholder="Atas Nama" name="atas_nama" require>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>No. Kuasa</label>
                                     <input type="text" class="form-control" placeholder="No. Kuasa" name="no_kuasa" require>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Upload Sertifikat (PDF)</label>
                                     <input type="file" class="form-control" name="file">
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Keterangan</label>
@@ -143,18 +95,22 @@ if ($titik_lokasi == 1) {
                                     </select>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-round mt-4" name="legal_tambah">Tambah Dokumen</button>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                </div>
 
+
+                        <!-- <div class="row">
+                            <div class="update ml-auto mr-auto">
+                                <button type="submit" class="btn btn-primary btn-round" name="user_tambah">Tambah Petugas</button>
+                            </div>
+                        </div> -->
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>

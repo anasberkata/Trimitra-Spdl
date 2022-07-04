@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 03, 2022 at 03:07 PM
+-- Generation Time: Jul 04, 2022 at 05:36 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -47,10 +47,11 @@ CREATE TABLE `data_legal` (
 
 INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_sertifikat`, `no_ajb`, `luas_tanah`, `atas_nama`, `no_kuasa`, `titik_lokasi`, `file`, `status_dokumen`, `date_created`) VALUES
 (1, 'M001', '01', '01', 2000, 'Nanang Miftahudin', '01', 1, 'sertifikat.pdf', 1, '2022-06-27'),
-(2, 'R001', '01', '01', 3000, 'Riana Cahyawati', '01', 2, 'RPA01.pdf', 2, '2022-07-03'),
+(2, 'RCK001', '01', '01', 3000, 'Riana Cahyawati', '01', 2, 'RPA01.pdf', 2, '2022-07-03'),
 (3, 'B001', '01', '01', 2300, 'Agnia Siti', '01', 3, 'buniayu01.pdf', 3, '2022-07-03'),
 (4, 'C001', '01', '01', 1500, 'Herna', '01', 4, 'cc.pdf', 4, '2022-07-03'),
-(8, 'B002', '02', '02', 1304, 'Berkata Kata', '02', 3, '62c1941349a20.pdf', 2, '2022-07-03');
+(8, 'B002', '02', '02', 1304, 'Berkata Kata', '02', 3, '62c1941349a20.pdf', 2, '2022-07-03'),
+(9, 'M002', '003', '003', 3000, 'maurentius', '003', 1, '62c305cb4e0c2.pdf', 3, '2022-07-04');
 
 -- --------------------------------------------------------
 
@@ -157,7 +158,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data_legal`
 --
 ALTER TABLE `data_legal`
-  MODIFY `id_legal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_legal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `status_dokumen`

@@ -3,10 +3,17 @@ include "../view_template/header.php";
 include "../view_template/sidebar.php";
 include "../view_template/topbar.php";
 
-$legal = query("SELECT * FROM data_legal
+if (!isset($_POST["search"])) {
+    $legal = query("SELECT * FROM data_legal
                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
-
+} else {
+    $kode = $_POST["kode"];
+    $legal = query("SELECT * FROM data_legal
+                INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
+                INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
+                WHERE kode_dokumen LIKE '%$kode%'");
+}
 ?>
 
 <div class="content">
@@ -19,7 +26,7 @@ $legal = query("SELECT * FROM data_legal
 
                     <div class="row">
                         <div class="col-12 col-lg-4">
-                            <a href="legal_add.php" class='btn btn-primary'>
+                            <a href="legal_add.php?titik_lokasi=1" class='btn btn-primary'>
                                 <span>Tambah Data</span>
                             </a>
                         </div>
@@ -27,10 +34,10 @@ $legal = query("SELECT * FROM data_legal
                             <form action="" method="post">
                                 <div class="form-group row align-items-center">
                                     <div class="col-3">
-                                        <label for="nik">No. Sertifikat</label>
+                                        <label for="kode">Kode Dokumen</label>
                                     </div>
                                     <div class="col-7">
-                                        <input type="text" class="form-control" name="nik" id="nik" placeholder="Cari data berdasarkan No. Sertifikat">
+                                        <input type="text" class="form-control" name="kode" id="kode" placeholder="Cari data berdasarkan Kode Dokumen">
                                     </div>
                                     <div class="col-2">
                                         <button type="submit" class="btn btn-primary w-100" name="search"><i class="nc-icon nc-zoom-split"></i></button>
