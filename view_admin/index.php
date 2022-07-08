@@ -18,6 +18,11 @@ if (!isset($titik_lokasi)) {
                 WHERE titik_lokasi = $titik_lokasi
                 ");
 }
+
+$total_f = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 1"));
+$total_rck = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 2"));
+$total_b = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 3"));
+$total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
 ?>
 
 <div class="content">
@@ -35,7 +40,7 @@ if (!isset($titik_lokasi)) {
                             <div class="col-10 col-md-10">
                                 <div class="numbers">
                                     <p class="card-category">Farm Mariwati</p>
-                                    <p class="card-title">20
+                                    <p class="card-title"><?= $total_f; ?>
                                     <p>
                                 </div>
                             </div>
@@ -57,7 +62,7 @@ if (!isset($titik_lokasi)) {
                             <div class="col-10 col-md-10">
                                 <div class="numbers">
                                     <p class="card-category">Cikalong Kulon</p>
-                                    <p class="card-title">150
+                                    <p class="card-title"><?= $total_rck; ?>
                                     <p>
                                 </div>
                             </div>
@@ -79,7 +84,7 @@ if (!isset($titik_lokasi)) {
                             <div class="col-10 col-md-10">
                                 <div class="numbers">
                                     <p class="card-category">Farm Buniayu</p>
-                                    <p class="card-title">50
+                                    <p class="card-title"><?= $total_b; ?>
                                     <p>
                                 </div>
                             </div>
@@ -101,7 +106,7 @@ if (!isset($titik_lokasi)) {
                             <div class="col-10 col-md-10">
                                 <div class="numbers">
                                     <p class="card-category">Cert Customer</p>
-                                    <p class="card-title">20
+                                    <p class="card-title"><?= $total_c; ?>
                                     <p>
                                 </div>
                             </div>
