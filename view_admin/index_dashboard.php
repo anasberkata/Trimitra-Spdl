@@ -3,40 +3,17 @@ include "../view_template/header.php";
 include "../view_template/sidebar.php";
 include "../view_template/topbar.php";
 
-
-
-// $titik_lokasi = $_GET["titik_lokasi"];
-
-// if (!isset($titik_lokasi)) {
-//     $legal = query("SELECT * FROM data_legal
-//                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
-//                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
-// } else {
-//     $legal = query("SELECT * FROM data_legal
-//                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
-//                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
-//                 WHERE titik_lokasi = $titik_lokasi
-//                 ");
-// }
+$total_f = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 1"));
+$total_r = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 2"));
+$total_b = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 3"));
+$total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
 
 $titik_lokasi = $_GET["titik_lokasi"];
-
-if (!isset($titik_lokasi)) {
-    $legal = query("SELECT * FROM data_legal
-                INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
-                INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
-} else {
-    $legal = query("SELECT * FROM data_legal
+$legal = query("SELECT * FROM data_legal
                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
                 WHERE titik_lokasi = $titik_lokasi
                 ");
-}
-
-$total_f = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 1"));
-$total_rck = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 2"));
-$total_b = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 3"));
-$total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
 ?>
 
 <div class="content">
@@ -76,7 +53,7 @@ $total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
                             <div class="col-10 col-md-10">
                                 <div class="numbers">
                                     <p class="card-category">Cikalong Kulon</p>
-                                    <p class="card-title"><?= $total_rck; ?>
+                                    <p class="card-title"><?= $total_r; ?>
                                     <p>
                                 </div>
                             </div>
@@ -134,14 +111,7 @@ $total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header ">
-                    <h5 class="card-title">Lokasi :
-                        <?php
-                        if (!isset($titik_lokasi)) {
-                            echo "Semua";
-                        } else {
-                            echo $legal[0]["lokasi"];
-                        }
-                        ?>
+                    <h5 class="card-title">Lokasi : <?= $l["lokasi"]; ?>
                     </h5>
                     <!-- <p class="card-category">Jumlah Data : </p> -->
                 </div>

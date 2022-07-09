@@ -1,12 +1,11 @@
 <?php
+include "../view_template/header.php";
+include "../view_template/sidebar.php";
+include "../view_template/topbar.php";
 
 $id = $_GET["id"];
 
 $user = query("SELECT * FROM users WHERE id = $id")[0];
-
-include "../view_template/header.php";
-include "../view_template/sidebar.php";
-include "../view_template/topbar.php";
 ?>
 
 <div class="content">
