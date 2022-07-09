@@ -19,9 +19,19 @@ include "../view_template/topbar.php";
 //                 ");
 // }
 
-$legal = query("SELECT * FROM data_legal
-        INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
-        INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
+$titik_lokasi = $_GET["titik_lokasi"];
+
+if (!isset($titik_lokasi)) {
+    $legal = query("SELECT * FROM data_legal
+                INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
+                INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
+} else {
+    $legal = query("SELECT * FROM data_legal
+                INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
+                INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
+                WHERE titik_lokasi = $titik_lokasi
+                ");
+}
 
 $total_f = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 1"));
 $total_rck = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 2"));

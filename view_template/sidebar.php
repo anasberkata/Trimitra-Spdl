@@ -11,7 +11,9 @@ $user = query("SELECT * FROM users WHERE id = $id_user")[0];
             </div>
         </a>
         <a href="#" class="simple-text logo-normal">
-            SPDL PT. QL TRIMITRA
+            SIPEDOL
+            <br>
+            QL. TRIMITRA
         </a>
     </div>
     <div class="sidebar-wrapper">

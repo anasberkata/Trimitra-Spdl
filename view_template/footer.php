@@ -5,7 +5,7 @@
                 <span class="copyright">
                     © <script>
                         document.write(new Date().getFullYear())
-                    </script>. Dev by Nanang Miftahudin
+                    </script>. Dev by Nanang Miptahudin
                 </span>
             </div>
         </div>

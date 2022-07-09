@@ -18,7 +18,7 @@ if ($titik_lokasi == 1) {
     $huruf = "M";
     $kodeDokumen = $huruf . sprintf("%03s", $urutan);
 } else if ($titik_lokasi == 2) {
-    $huruf = "RCK";
+    $huruf = "R";
     $kodeDokumen = $huruf . sprintf("%03s", $urutan);
 } else if ($titik_lokasi == 3) {
     $huruf = "B";
@@ -27,8 +27,6 @@ if ($titik_lokasi == 1) {
     $huruf = "C";
     $kodeDokumen = $huruf . sprintf("%03s", $urutan);
 }
-
-
 
 ?>
 
