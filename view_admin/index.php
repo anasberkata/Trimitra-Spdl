@@ -124,8 +124,7 @@ $total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header ">
-                    <h5 class="card-title">Lokasi : Semua Lokasi
-                    </h5>
+                    <!-- <h5 class="card-title">Lokasi : Semua Lokasi</h5> -->
                     <!-- <p class="card-category">Jumlah Data : </p> -->
                 </div>
                 <div class="card-body ">

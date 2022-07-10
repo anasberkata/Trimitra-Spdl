@@ -111,8 +111,7 @@ $legal = query("SELECT * FROM data_legal
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header ">
-                    <h5 class="card-title">Lokasi : <?= $l["lokasi"]; ?>
-                    </h5>
+                    <!-- <h5 class="card-title">Lokasi : <?= $legal[0]["lokasi"]; ?></h5> -->
                     <!-- <p class="card-category">Jumlah Data : </p> -->
                 </div>
                 <div class="card-body ">
