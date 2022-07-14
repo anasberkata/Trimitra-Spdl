@@ -174,7 +174,8 @@ function upload()
         return false;
     }
 
-    if ($ukuranFile > 2500000) {
+    // max 10mb
+    if ($ukuranFile > 10000000) {
         echo "<script>
                 alert('Ukuran file terlalu besar, Maksimal 2mb!');
             </script>";
