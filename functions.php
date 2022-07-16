@@ -1,7 +1,7 @@
 <?php
 
 // KONEKSI DATABASE =====================================================
-$conn = mysqli_connect("localhost", "root", "", "db_trimitra");
+$conn = mysqli_connect("localhost", "root", "", "db_sipedol");
 
 
 function query($query)
@@ -175,9 +175,9 @@ function upload()
     }
 
     // max 10mb
-    if ($ukuranFile > 10000000) {
+    if ($ukuranFile > 20000000) {
         echo "<script>
-                alert('Ukuran file terlalu besar, Maksimal 2mb!');
+                alert('Ukuran file terlalu besar, Maksimal 20mb!');
             </script>";
 
         return false;
