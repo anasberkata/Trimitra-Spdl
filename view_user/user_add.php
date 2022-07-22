@@ -18,7 +18,7 @@ include "../view_template/topbar.php";
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Nama Lengkap</label>
-                                    <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama">
+                                    <input type="text" class="form-control" placeholder="Nama Lengkap" name="nama" required>
                                 </div>
                             </div>
                         </div>
@@ -27,13 +27,13 @@ include "../view_template/topbar.php";
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Username</label>
-                                    <input type="text" class="form-control" placeholder="Username" name="username">
+                                    <input type="text" class="form-control" placeholder="Username" name="username" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="password" name="password">
+                                    <input type="password" class="form-control" placeholder="password" name="password" required>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@ include "../view_template/topbar.php";
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>E-Mail</label>
-                                    <input type="email" class="form-control" placeholder="E-Mail" name="email">
+                                    <input type="email" class="form-control" placeholder="E-Mail" name="email" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -77,16 +77,25 @@ include "../view_template/footer.php";
 // Tambah RT RW
 if (isset($_POST["user_tambah"])) {
 
-    // cek apakah data berhasil di tambahkan atau tidak
-    if (user_tambah($_POST) > 0) {
+    $email = $_POST["email"];
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>
-                alert('Data berhasil ditambahkan');
+                alert('Email sudah terdaftar');
                 document.location.href= 'index.php';
             </script>";
     } else {
-        echo "<script>
+        // cek apakah data berhasil di tambahkan atau tidak
+        if (user_tambah($_POST) > 0) {
+            echo "<script>
+                alert('Data berhasil ditambahkan');
+                document.location.href= 'index.php';
+            </script>";
+        } else {
+            echo "<script>
                 alert('Data gagal ditambahkan');
             </script>";
+        }
     }
 }
 ?>
