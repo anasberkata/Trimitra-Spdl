@@ -21,12 +21,14 @@ include "../view_template/topbar.php";
 
 $legal = query("SELECT * FROM data_legal
         INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
-        INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen");
+        INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
+        WHERE is_active = 1
+        ");
 
-$total_f = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 1"));
-$total_rck = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 2"));
-$total_b = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 3"));
-$total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
+$total_f = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 1 AND is_active = 1"));
+$total_r = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 2 AND is_active = 1"));
+$total_b = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 3 AND is_active = 1"));
+$total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4 AND is_active = 1"));
 ?>
 
 <div class="content">
@@ -66,7 +68,7 @@ $total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
                             <div class="col-10 col-md-10">
                                 <div class="numbers">
                                     <p class="card-category">Cikalong Kulon</p>
-                                    <p class="card-title"><?= $total_rck; ?>
+                                    <p class="card-title"><?= $total_r; ?>
                                     <p>
                                 </div>
                             </div>
@@ -133,7 +135,7 @@ $total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
                             <thead class=" text-primary">
                                 <th>No.</th>
                                 <th>Kode Dokumen</th>
-                                <th>No. Sertifikat</th>
+                                <th>No. Dokumen</th>
                                 <th>No. AJB</th>
                                 <th>Atas Nama</th>
                                 <th>Keterangan</th>
@@ -144,7 +146,7 @@ $total_c = count(query("SELECT * FROM data_legal WHERE titik_lokasi = 4"));
                                     <tr>
                                         <td><?= $i; ?></td>
                                         <td><?= $l["kode_dokumen"]; ?></td>
-                                        <td><?= $l["no_sertifikat"]; ?></td>
+                                        <td><?= $l["no_dokumen"]; ?></td>
                                         <td><?= $l["no_ajb"]; ?></td>
                                         <td><?= $l["atas_nama"]; ?></td>
                                         <td>

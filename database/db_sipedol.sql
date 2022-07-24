@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2022 at 04:39 PM
+-- Generation Time: Jul 24, 2022 at 12:19 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `data_legal` (
   `id_legal` int(11) NOT NULL,
   `kode_dokumen` varchar(100) NOT NULL,
-  `no_sertifikat` varchar(100) NOT NULL,
+  `no_dokumen` varchar(100) NOT NULL,
+  `no_hgb` varchar(100) NOT NULL,
   `no_ajb` varchar(100) NOT NULL,
   `luas_tanah` int(11) NOT NULL,
   `atas_nama` varchar(100) NOT NULL,
@@ -38,18 +39,21 @@ CREATE TABLE `data_legal` (
   `titik_lokasi` int(11) NOT NULL,
   `file` varchar(255) NOT NULL,
   `status_dokumen` int(11) NOT NULL,
-  `date_created` date NOT NULL
+  `keterangan` varchar(256) NOT NULL,
+  `date_created` date NOT NULL,
+  `is_active` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `data_legal`
 --
 
-INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_sertifikat`, `no_ajb`, `luas_tanah`, `atas_nama`, `no_kuasa`, `titik_lokasi`, `file`, `status_dokumen`, `date_created`) VALUES
-(1, 'M001', '01', '01', 2000, 'Nanang Miftahudin', '01', 1, 'sertifikat.pdf', 1, '2022-06-27'),
-(3, 'B001', '01', '01', 2300, 'Agnia Siti', '01', 3, 'buniayu01.pdf', 3, '2022-07-03'),
-(8, 'B002', '02', '02', 1304, 'Berkata Kata', '02', 3, '62c1941349a20.pdf', 2, '2022-07-03'),
-(9, 'M002', '003', '003', 3000, 'maurentius', '003', 1, '62c305cb4e0c2.pdf', 3, '2022-07-04');
+INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_dokumen`, `no_hgb`, `no_ajb`, `luas_tanah`, `atas_nama`, `no_kuasa`, `titik_lokasi`, `file`, `status_dokumen`, `keterangan`, `date_created`, `is_active`) VALUES
+(1, 'M001', '01', '', '01', 2000, 'Nanang Miftahudin', '01', 1, 'sertifikat.pdf', 1, '', '2022-06-27', 1),
+(3, 'B001', '01', '', '01', 2300, 'Agnia Siti', '01', 3, 'buniayu01.pdf', 3, '', '2022-07-03', 1),
+(8, 'B002', '02', '', '02', 1304, 'Berkata Kata', '02', 3, '62c1941349a20.pdf', 2, '', '2022-07-03', 1),
+(9, 'M002', '003', '', '003', 3000, 'maurentius', '003', 1, '62c305cb4e0c2.pdf', 3, '', '2022-07-04', 1),
+(10, 'R001', '02', '02', '02', 20, 'Anas Ajah', '02', 2, '62dd0a56087af.pdf', 2, 'Dll', '2022-07-24', 0);
 
 -- --------------------------------------------------------
 
@@ -156,7 +160,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `data_legal`
 --
 ALTER TABLE `data_legal`
-  MODIFY `id_legal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_legal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `status_dokumen`

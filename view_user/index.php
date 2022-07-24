@@ -14,9 +14,13 @@ $users = query("SELECT * FROM users");
                     <h5 class="card-title">Data Petugas</h5>
                     <!-- <p class="card-category">24 Hours performance</p> -->
 
-                    <a href="user_add.php" class='btn btn-primary'>
-                        <span>Tambah Data</span>
-                    </a>
+                    <?php if ($user['role_id'] == 1) : ?>
+                        <a href="user_add.php" class='btn btn-primary'>
+                            <span>Tambah Data</span>
+                        </a>
+                    <?php else : ?>
+
+                    <?php endif; ?>
                 </div>
                 <div class="card-body ">
                     <div class="table-responsive">
@@ -26,7 +30,11 @@ $users = query("SELECT * FROM users");
                                 <th>Nama</th>
                                 <th>E-Mail</th>
                                 <th>Username</th>
-                                <th>Opsi</th>
+                                <?php if ($user['role_id'] == 1) : ?>
+                                    <th>Opsi</th>
+                                <?php else : ?>
+
+                                <?php endif; ?>
                             </thead>
                             <tbody>
                                 <?php $i = 1; ?>
@@ -36,10 +44,14 @@ $users = query("SELECT * FROM users");
                                         <td><?= $u["nama"]; ?></td>
                                         <td><?= $u["email"]; ?></td>
                                         <td><?= $u["username"]; ?></td>
-                                        <td>
-                                            <a href="user_edit.php?id=<?= $u["id"] ?>" class="badge bg-warning mb-2 text-white">Edit</a> <br>
-                                            <a href="user_delete.php?id=<?= $u["id"] ?>" class="badge bg-danger text-white" onclick="return confirm('Yakin akan menghapus data petugas : <?= $u['nama']; ?> ?');">Hapus</a>
-                                        </td>
+                                        <?php if ($user['role_id'] == 1) : ?>
+                                            <td>
+                                                <a href="user_edit.php?id=<?= $u["id"] ?>" class="badge bg-warning mb-2 text-white">Edit</a> <br>
+                                                <a href="user_delete.php?id=<?= $u["id"] ?>" class="badge bg-danger text-white" onclick="return confirm('Yakin akan menghapus data petugas : <?= $u['nama']; ?> ?');">Hapus</a>
+                                            </td>
+                                        <?php else : ?>
+
+                                        <?php endif; ?>
                                     </tr>
                                     <?php $i++; ?>
                                 <?php endforeach; ?>

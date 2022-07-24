@@ -46,13 +46,10 @@ $status_dokumen = query("SELECT * FROM status_dokumen");
                                     <input type="text" class="form-control" placeholder="Kode Dokumen" name="kode_dokumen" value="<?= $legal["kode_dokumen"]; ?>" readonly>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>No. Sertifikat</label>
-                                    <input type="text" class="form-control" placeholder="No. Sertifikat" name="no_sertifikat" value="<?= $legal["no_sertifikat"]; ?>">
+                                    <label>No. Dokumen</label>
+                                    <input type="text" class="form-control" placeholder="No. Dokumen" name="no_dokumen" value="<?= $legal["no_dokumen"]; ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -61,13 +58,10 @@ $status_dokumen = query("SELECT * FROM status_dokumen");
                                     <input type="text" class="form-control" placeholder="No. AJB" name="no_ajb" value="<?= $legal["no_ajb"]; ?>">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Luas Tanah (m<sup>2</sup>)</label>
-                                    <input type="number" class="form-control" placeholder="Luas Tanah" name="luas_tanah" value="<?= $legal["luas_tanah"]; ?>">
+                                    <label>No. HGB</label>
+                                    <input type="text" class="form-control" placeholder="No. HGB" name="no_hgb" value="<?= $legal["no_hgb"]; ?>">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -76,9 +70,6 @@ $status_dokumen = query("SELECT * FROM status_dokumen");
                                     <input type="text" class="form-control" placeholder="Atas Nama" name="atas_nama" value="<?= $legal["atas_nama"]; ?>">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>No. Kuasa</label>
@@ -87,17 +78,20 @@ $status_dokumen = query("SELECT * FROM status_dokumen");
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Upload Sertifikat (PDF) : <a href="../dokumen/<?= $legal["file"]; ?>" target="_blank">Lihat File</a></label>
+                                    <label>Luas Area (m<sup>2</sup>)</label>
+                                    <input type="number" class="form-control" placeholder="Luas Tanah" name="luas_tanah" value="<?= $legal["luas_tanah"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Upload Dokumen (PDF) : <a href="../dokumen/<?= $legal["file"]; ?>" target="_blank">Lihat File</a></label>
                                     <input type="file" class="form-control" name="file">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Keterangan</label>
-                                    <select class="form-control" name="keterangan">
+                                    <label>Status Dokumen</label>
+                                    <select class="form-control" name="status_dokumen">
                                         <option value="<?= $legal["id_status_dokumen"]; ?>"><?= $legal["status"]; ?></option>
                                         <?php foreach ($status_dokumen as $sd) : ?>
                                             <option value="<?= $sd["id_status_dokumen"]; ?>"><?= $sd["status"]; ?></option>
@@ -105,6 +99,32 @@ $status_dokumen = query("SELECT * FROM status_dokumen");
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Keterangan</label>
+                                    <input type="text" class="form-control" placeholder="Keterangan" name="keterangan" value="<?= $legal["keterangan"]; ?>">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Status Aktif</label>
+                                    <select class="form-control" name="is_active">
+                                        <option value="<?= $legal["is_active"]; ?>">
+                                            <?php
+                                            if ($legal["is_active"] == 1) {
+                                                echo "Aktif";
+                                            } else {
+                                                echo "Tidak Aktif";
+                                            }
+                                            ?>
+                                        </option>
+                                        <option value="1">Aktif</option>
+                                        <option value="0">Tidak Aktif</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-round mt-4" name="legal_edit">Edit Dokumen</button>

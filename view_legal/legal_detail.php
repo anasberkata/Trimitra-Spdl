@@ -37,20 +37,23 @@ $legal = query("SELECT * FROM data_legal
                         <div class="col-6 col-lg-3">
                             <ul class="list-group">
                                 <li class="list-group-item">Kode Dokumen</li>
-                                <li class="list-group-item">No. Sertifikat</li>
+                                <li class="list-group-item">No. Dokumen</li>
+                                <li class="list-group-item">No. HGB</li>
                                 <li class="list-group-item">No. AJB</li>
                                 <li class="list-group-item">Luas Tanah</li>
                                 <li class="list-group-item">Atas Nama</li>
                                 <li class="list-group-item">No. Kuasa</li>
                                 <li class="list-group-item">Titik Lokasi</li>
                                 <li class="list-group-item">File</li>
+                                <li class="list-group-item">Status Dokumen</li>
                                 <li class="list-group-item">Keterangan</li>
                             </ul>
                         </div>
                         <div class="col-6 col-lg-9">
                             <ul class="list-group">
                                 <li class="list-group-item">: <?= $legal["kode_dokumen"]; ?></li>
-                                <li class="list-group-item">: <?= $legal["no_sertifikat"]; ?></li>
+                                <li class="list-group-item">: <?= $legal["no_dokumen"]; ?></li>
+                                <li class="list-group-item">: <?= $legal["no_hgb"]; ?></li>
                                 <li class="list-group-item">: <?= $legal["no_ajb"]; ?></li>
                                 <li class="list-group-item">: <?= $legal["luas_tanah"]; ?> m<sup>2</sup></li>
                                 <li class="list-group-item">: <?= $legal["atas_nama"]; ?></li>
@@ -68,6 +71,7 @@ $legal = query("SELECT * FROM data_legal
                                         <span class="badge bg-danger text-white"><?= $legal["status"]; ?></span>
                                     <?php endif; ?>
                                 </li>
+                                <li class="list-group-item">: <?= $legal["keterangan"]; ?></li>
                             </ul>
                         </div>
                     </div>

@@ -87,43 +87,40 @@ if ($titik_lokasi == 1) {
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>No. Sertifikat</label>
-                                    <input type="text" class="form-control" placeholder="No. Sertifikat" name="no_sertifikat" require>
+                                    <label>No. Dokumen</label>
+                                    <input type="text" class="form-control" placeholder="No. Dokumen" name="no_dokumen">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>No. AJB</label>
-                                    <input type="text" class="form-control" placeholder="No. AJB" name="no_ajb" require>
+                                    <input type="text" class="form-control" placeholder="No. AJB" name="no_ajb">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Luas Tanah (m<sup>2</sup>)</label>
-                                    <input type="number" class="form-control" placeholder="Luas Tanah" name="luas_tanah" require>
+                                    <label>No. HGB</label>
+                                    <input type="text" class="form-control" placeholder="No. HGB" name="no_hgb">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Atas Nama</label>
-                                    <input type="text" class="form-control" placeholder="Atas Nama" name="atas_nama" require>
+                                    <input type="text" class="form-control" placeholder="Atas Nama" name="atas_nama" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>No. Kuasa</label>
-                                    <input type="text" class="form-control" placeholder="No. Kuasa" name="no_kuasa" require>
+                                    <input type="text" class="form-control" placeholder="No. Kuasa" name="no_kuasa" required>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Luas Area (m<sup>2</sup>)</label>
+                                    <input type="number" class="form-control" placeholder="Luas Area" name="luas_tanah" required>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Upload Sertifikat (PDF)</label>
@@ -132,13 +129,19 @@ if ($titik_lokasi == 1) {
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label>Keterangan</label>
-                                    <select class="form-control" name="keterangan">
+                                    <label>Status Dokumen</label>
+                                    <select class="form-control" name="status_dokumen">
                                         <option value="">Pilih Status Dokumen</option>
                                         <?php foreach ($status_dokumen as $sd) : ?>
                                             <option value="<?= $sd["id_status_dokumen"]; ?>"><?= $sd["status"]; ?></option>
                                         <?php endforeach; ?>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Keterangan</label>
+                                    <input type="text" class="form-control" placeholder="Keterangan" name="keterangan">
                                 </div>
                             </div>
                         </div>

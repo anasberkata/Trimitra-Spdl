@@ -7,7 +7,7 @@ if (!isset($_POST["search"])) {
     $legal = query("SELECT * FROM data_legal
                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
-                WHERE is_active = 1
+                WHERE is_active = 0
                 ");
 } else {
     $kode = $_POST["kode"];
@@ -15,7 +15,7 @@ if (!isset($_POST["search"])) {
                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
                 WHERE kode_dokumen LIKE '%$kode%'
-                WHERE is_active = 1
+                WHERE is_active = 0
                 ");
 }
 ?>
@@ -25,14 +25,15 @@ if (!isset($_POST["search"])) {
         <div class="col-md-12">
             <div class="card ">
                 <div class="card-header ">
-                    <h5 class="card-title">Data Dokumen Legal</h5>
+                    <!-- <h5 class="card-title">Dokumen Legal Tidak Aktif</h5> -->
                     <!-- <p class="card-category">24 Hours performance</p> -->
 
                     <div class="row">
                         <div class="col-12 col-lg-4">
-                            <a href="legal_add.php?titik_lokasi=1" class='btn btn-primary'>
+                            <h5 class="card-title mt-4">Dokumen Tidak Aktif</h5>
+                            <!-- <a href="legal_add.php?titik_lokasi=1" class='btn btn-primary'>
                                 <span>Tambah Data</span>
-                            </a>
+                            </a> -->
                         </div>
                         <div class="col-12 col-lg-8 pt-2">
                             <form action="" method="post">
@@ -93,8 +94,8 @@ if (!isset($_POST["search"])) {
                                         </td>
                                         <td>
                                             <a href="legal_detail.php?id=<?= $l["id_legal"] ?>" class="badge bg-primary text-white mb-2"><i class="nc-icon nc-single-copy-04 p-2"></i></a> <br>
-                                            <a href="legal_edit.php?id=<?= $l["id_legal"] ?>" class="badge bg-info text-white mb-2"><i class="nc-icon nc-tap-01 p-2"></i></a><br>
-                                            <a href="legal_delete.php?id=<?= $l["id_legal"] ?>" class="badge bg-danger text-white mb-2" onclick="return confirm('Yakin akan menon-aktifkan dokumen : <?= $l['atas_nama']; ?> ?');"><i class="nc-icon nc-simple-remove p-2"></i></a>
+                                            <!-- <a href="legal_edit.php?id=<?= $l["id_legal"] ?>" class="badge bg-info text-white mb-2"><i class="nc-icon nc-tap-01 p-2"></i></a><br> -->
+                                            <a href="legal_active.php?id=<?= $l["id_legal"] ?>" class="badge bg-success text-white mb-2" onclick="return confirm('Yakin akan mengaktifkan dokumen : <?= $l['atas_nama']; ?> ?');"><i class="nc-icon nc-check-2 p-2"></i></a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

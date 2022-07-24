@@ -82,14 +82,17 @@ function legal_tambah($data)
     global $conn;
 
     $kode_dokumen = $data["kode_dokumen"];
-    $no_sertifikat = $data["no_sertifikat"];
+    $no_dokumen = $data["no_dokumen"];
+    $no_hgb = $data["no_hgb"];
     $no_ajb = $data["no_ajb"];
     $luas_tanah = $data["luas_tanah"];
     $atas_nama = $data["atas_nama"];
     $no_kuasa = $data["no_kuasa"];
     $titik_lokasi = $data["titik_lokasi"];
+    $status_dokumen = $data["status_dokumen"];
     $keterangan = $data["keterangan"];
     $date_created = date("Y-m-d");
+    $is_active = 1;
 
     // Upload File
     $file = upload();
@@ -99,7 +102,7 @@ function legal_tambah($data)
 
     $query = "INSERT INTO data_legal
 				VALUES
-			(NULL, '$kode_dokumen', '$no_sertifikat', '$no_ajb', '$luas_tanah', '$atas_nama', '$no_kuasa', '$titik_lokasi', '$file', '$keterangan', '$date_created')
+			(NULL, '$kode_dokumen', '$no_dokumen', '$no_hgb', '$no_ajb', '$luas_tanah', '$atas_nama', '$no_kuasa', '$titik_lokasi', '$file', '$status_dokumen', '$keterangan', '$date_created', '$is_active')
 			";
 
     mysqli_query($conn, $query);
@@ -113,13 +116,16 @@ function legal_edit($data)
 
     $id = $data["id"];
     $kode_dokumen = $data["kode_dokumen"];
-    $no_sertifikat = $data["no_sertifikat"];
+    $no_dokumen = $data["no_dokumen"];
+    $no_hgb = $data["no_hgb"];
     $no_ajb = $data["no_ajb"];
     $luas_tanah = $data["luas_tanah"];
     $atas_nama = $data["atas_nama"];
     $no_kuasa = $data["no_kuasa"];
     $titik_lokasi = $data["titik_lokasi"];
+    $status_dokumen = $data["status_dokumen"];
     $keterangan = $data["keterangan"];
+    $is_active = $data["is_active"];
     $file_lama = $data["file_lama"];
 
     if ($_FILES["file"]["error"] === 4) {
@@ -130,13 +136,16 @@ function legal_edit($data)
 
     $query = "UPDATE data_legal SET
 			kode_dokumen = '$kode_dokumen',
-			no_sertifikat = '$no_sertifikat',
+			no_dokumen = '$no_dokumen',
+			no_hgb = '$no_hgb',
 			no_ajb = '$no_ajb',
 			luas_tanah = '$luas_tanah',
 			atas_nama = '$atas_nama',
 			no_kuasa = '$no_kuasa',
 			titik_lokasi = '$titik_lokasi',
-			status_dokumen = '$keterangan',
+			status_dokumen = '$status_dokumen',
+			keterangan = '$keterangan',
+			is_active = '$is_active',
 			file = '$file'
 
             WHERE id_legal = $id
@@ -196,6 +205,28 @@ function legal_delete($id)
 {
     global $conn;
 
-    mysqli_query($conn, "DELETE FROM data_legal WHERE id_legal = $id");
+    $query = "UPDATE data_legal SET
+			is_active = 0
+
+            WHERE id_legal = $id
+			";
+
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
+function legal_active($id)
+{
+    global $conn;
+
+    $query = "UPDATE data_legal SET
+			is_active = 1
+
+            WHERE id_legal = $id
+			";
+
+    mysqli_query($conn, $query);
+
     return mysqli_affected_rows($conn);
 }

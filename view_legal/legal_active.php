@@ -3,24 +3,24 @@ session_start();
 
 // cek apakah yang mengakses halaman ini sudah login
 if (!isset($_SESSION['login'])) {
-	header("location: index.php");
+    header("location: index.php");
 }
 
 require '../functions.php';
 
 $id = $_GET["id"];
 
-if (legal_delete($id) > 0) {
-	echo "
+if (legal_active($id) > 0) {
+    echo "
 		<script>
-			alert('Data berhasil dinon-aktifkan');
+			alert('Data berhasil diaktifkan');
 			document.location.href = 'index.php';
 		</script>
 	";
 } else {
-	echo "
+    echo "
 		<script>
-			alert('Data gagal dinon-aktifkan');
+			alert('Data gagal diaktifkan');
 			document.location.href = 'index.php';
 		</script>
 
