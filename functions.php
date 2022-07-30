@@ -30,12 +30,21 @@ function user_tambah($data)
     $date_created = date("Y-m-d");
     $is_active = 1;
 
-    $query = "INSERT INTO users
+    $cek_email = mysqli_query($conn, "SELECT * FROM users WHERE email = '$email'");
+    if ($cek_email->num_rows > 0) {
+        echo "<script>
+                alert('E-Mail sudah terdaftar!');
+                document.location.href= 'user_add.php';
+            </script>";
+    } else {
+
+        $query = "INSERT INTO users
 				VALUES
 			(NULL, '$nama', '$email', '$username', '$password', '$role', '$date_created', '$is_active')
 			";
 
-    mysqli_query($conn, $query);
+        mysqli_query($conn, $query);
+    }
 
     return mysqli_affected_rows($conn);
 }

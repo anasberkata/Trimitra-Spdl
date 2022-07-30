@@ -77,25 +77,16 @@ include "../view_template/footer.php";
 // Tambah RT RW
 if (isset($_POST["user_tambah"])) {
 
-    $email = $_POST["email"];
-
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    // cek apakah data berhasil di tambahkan atau tidak
+    if (user_tambah($_POST) > 0) {
         echo "<script>
-                alert('Email sudah terdaftar');
-                document.location.href= 'index.php';
-            </script>";
-    } else {
-        // cek apakah data berhasil di tambahkan atau tidak
-        if (user_tambah($_POST) > 0) {
-            echo "<script>
                 alert('Data berhasil ditambahkan');
                 document.location.href= 'index.php';
             </script>";
-        } else {
-            echo "<script>
+    } else {
+        echo "<script>
                 alert('Data gagal ditambahkan');
             </script>";
-        }
     }
 }
 ?>

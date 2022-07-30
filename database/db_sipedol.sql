@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 24, 2022 at 12:19 PM
+-- Generation Time: Jul 30, 2022 at 08:14 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -49,7 +49,7 @@ CREATE TABLE `data_legal` (
 --
 
 INSERT INTO `data_legal` (`id_legal`, `kode_dokumen`, `no_dokumen`, `no_hgb`, `no_ajb`, `luas_tanah`, `atas_nama`, `no_kuasa`, `titik_lokasi`, `file`, `status_dokumen`, `keterangan`, `date_created`, `is_active`) VALUES
-(1, 'M001', '01', '', '01', 2000, 'Nanang Miftahudin', '01', 1, 'sertifikat.pdf', 1, '', '2022-06-27', 1),
+(1, 'M001', '01', '', '01', 2000, 'Nanang Miftahudin', '01', 1, '62e4ca549ec81.pdf', 1, '', '2022-06-27', 1),
 (3, 'B001', '01', '', '01', 2300, 'Agnia Siti', '01', 3, 'buniayu01.pdf', 3, '', '2022-07-03', 1),
 (8, 'B002', '02', '', '02', 1304, 'Berkata Kata', '02', 3, '62c1941349a20.pdf', 2, '', '2022-07-03', 1),
 (9, 'M002', '003', '', '003', 3000, 'maurentius', '003', 1, '62c305cb4e0c2.pdf', 3, '', '2022-07-04', 1),
@@ -122,7 +122,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `role_id`, `date_created`, `is_active`) VALUES
 (1, 'Nanang Miptahudin', 'nanang@gmail.com', 'admin', 'admin', 1, '2022-06-20', 1),
-(2, 'Petugas Legal', 'petugaslegal@gmail.com', 'petugas01', 'petugas01', 2, '2022-06-21', 1);
+(2, 'Petugas Legal', 'petugaslegal@gmail.com', 'petugas01', 'petugas01', 2, '2022-06-21', 1),
+(5, 'Eka Anas Jatnika', 'anasberkata@gmail.com', 'anasberkata', '1234567890', 1, '2022-07-30', 1);
 
 --
 -- Indexes for dumped tables
@@ -178,7 +179,7 @@ ALTER TABLE `titik_lokasi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
