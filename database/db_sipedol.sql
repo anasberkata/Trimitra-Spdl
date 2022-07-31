@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 30, 2022 at 08:14 AM
+-- Generation Time: Jul 31, 2022 at 11:51 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.1.6
 
@@ -123,7 +123,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `nama`, `email`, `username`, `password`, `role_id`, `date_created`, `is_active`) VALUES
 (1, 'Nanang Miptahudin', 'nanang@gmail.com', 'admin', 'admin', 1, '2022-06-20', 1),
 (2, 'Petugas Legal', 'petugaslegal@gmail.com', 'petugas01', 'petugas01', 2, '2022-06-21', 1),
-(5, 'Eka Anas Jatnika', 'anasberkata@gmail.com', 'anasberkata', '1234567890', 1, '2022-07-30', 1);
+(5, 'Eka Anas Jatnika', 'anasberkata@gmail.com', 'anasberkata', '1234567890', 1, '2022-07-30', 1),
+(6, 'petugas02', 'petugas02@gmail.com', 'petugas02', '1234567890', 2, '2022-07-31', 1);
 
 --
 -- Indexes for dumped tables
@@ -179,7 +180,7 @@ ALTER TABLE `titik_lokasi`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

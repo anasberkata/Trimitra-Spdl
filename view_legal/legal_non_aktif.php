@@ -15,7 +15,7 @@ if (!isset($_POST["search"])) {
                 INNER JOIN titik_lokasi ON data_legal.titik_lokasi = titik_lokasi.id_titik_lokasi
                 INNER JOIN status_dokumen ON data_legal.status_dokumen = status_dokumen.id_status_dokumen
                 WHERE kode_dokumen LIKE '%$kode%'
-                WHERE is_active = 0
+                AND is_active = 0
                 ");
 }
 ?>
@@ -95,7 +95,12 @@ if (!isset($_POST["search"])) {
                                         <td>
                                             <a href="legal_detail.php?id=<?= $l["id_legal"] ?>" class="badge bg-primary text-white mb-2"><i class="nc-icon nc-single-copy-04 p-2"></i></a> <br>
                                             <!-- <a href="legal_edit.php?id=<?= $l["id_legal"] ?>" class="badge bg-info text-white mb-2"><i class="nc-icon nc-tap-01 p-2"></i></a><br> -->
-                                            <a href="legal_active.php?id=<?= $l["id_legal"] ?>" class="badge bg-success text-white mb-2" onclick="return confirm('Yakin akan mengaktifkan dokumen : <?= $l['atas_nama']; ?> ?');"><i class="nc-icon nc-check-2 p-2"></i></a>
+
+                                            <?php if ($user['role_id'] == 1) : ?>
+                                                <a href="legal_active.php?id=<?= $l["id_legal"] ?>" class="badge bg-success text-white mb-2" onclick="return confirm('Yakin akan mengaktifkan dokumen : <?= $l['atas_nama']; ?> ?');"><i class="nc-icon nc-check-2 p-2"></i></a>
+                                            <?php else : ?>
+
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>

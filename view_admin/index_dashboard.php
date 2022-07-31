@@ -121,7 +121,7 @@ $legal = query("SELECT * FROM data_legal
                             <thead class=" text-primary">
                                 <th>No.</th>
                                 <th>Kode Dokumen</th>
-                                <th>No. Sertifikat</th>
+                                <th>No. Dokumen</th>
                                 <th>No. AJB</th>
                                 <th>Atas Nama</th>
                                 <th>Keterangan</th>
@@ -132,7 +132,7 @@ $legal = query("SELECT * FROM data_legal
                                     <tr>
                                         <td><?= $i; ?></td>
                                         <td><?= $l["kode_dokumen"]; ?></td>
-                                        <td><?= $l["no_sertifikat"]; ?></td>
+                                        <td><?= $l["no_dokumen"]; ?></td>
                                         <td><?= $l["no_ajb"]; ?></td>
                                         <td><?= $l["atas_nama"]; ?></td>
                                         <td>
