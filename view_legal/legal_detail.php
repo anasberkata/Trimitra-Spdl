@@ -20,7 +20,7 @@ $legal = query("SELECT * FROM data_legal
                 <div class="card-header ">
                     <div class="row">
                         <div class="col">
-                            <h5 class="card-title">Detail Dokumen : <?= $legal["no_sertifikat"]; ?></h5>
+                            <h5 class="card-title">Detail Dokumen : <?= $legal["no_dokumen"]; ?></h5>
                         </div>
                         <div class="col">
                             <a href="index.php" class="btn btn-primary float-right">Kembali</a>
@@ -59,7 +59,7 @@ $legal = query("SELECT * FROM data_legal
                                 <li class="list-group-item">: <?= $legal["atas_nama"]; ?></li>
                                 <li class="list-group-item">: <?= $legal["no_kuasa"]; ?></li>
                                 <li class="list-group-item">: <?= $legal["lokasi"]; ?></li>
-                                <li class="list-group-item">: <a href="../dokumen/<?= $legal["file"]; ?>" class="badge bg-info text-white">Lihat File</a></li>
+                                <li class="list-group-item">: <a href="../dokumen/<?= $legal["file"]; ?>" class="badge bg-info text-white" target="blank">Lihat File</a></li>
                                 <li class="list-group-item">:
                                     <?php if ($legal["id_status_dokumen"] == 1) : ?>
                                         <span class="badge bg-info text-white"><?= $legal["status"]; ?></span>
@@ -88,7 +88,7 @@ $legal = query("SELECT * FROM data_legal
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="file">Sertifikat</h5>
+                <h5 class="modal-title" id="file">Dokumen Sertifikat</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
